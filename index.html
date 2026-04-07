@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -702,50 +701,75 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-name {
+        /* NEW: skill badges grid without percentages and bars */
+        .skills-badge-grid {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            color: var(--text-light);
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 0.5rem;
         }
 
-        .skill-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
+        .skill-badge {
+            background: rgba(0, 229, 255, 0.12);
+            color: var(--accent);
+            padding: 10px 18px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(0, 229, 255, 0.25);
         }
 
-        .skill-progress {
+        .skill-badge:hover {
+            background: var(--accent-soft);
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 229, 255, 0.2);
+        }
+
+        /* Skill badge icon sizing */
+        .skill-badge i {
+            font-size: 1.1rem;
+        }
+
+        /* Remove old progress styles */
+        .skill-item, .skill-bar, .skill-progress, .skill-name {
+            display: none;
+        }
+
+        /* Ensure skills badge grid uses flex wrap but maintains visual balance */
+        .skills-badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 0.5rem;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        /* Make all skill-category cards equal height for perfect alignment */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
             height: 100%;
-            background: var(--accent);
-            border-radius: 4px;
-            width: 0;
-            transition: width 1.5s ease-in-out;
         }
 
-        .skill-progress::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.2), 
-                transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        .skills-badge-grid, .soft-skills-grid {
+            flex: 1;
         }
 
         .soft-skills-grid {
@@ -1136,7 +1160,7 @@
             <div class="project-image-container">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6vBNXfjhyVq-X0Ii0Ax5wvNi1_WHgmlIoAg&s">
             </div>
-            <div class="project-content">data
+            <div class="project-content">
                 <h3 class="project-title">Hangman Game</h3>
                 <p class="project-description">
                     Console-based hangman game built with C++ implementing OOP principles. 
@@ -1156,89 +1180,200 @@
     </div>
 </section>
 
-<!-- SKILLS SECTION -->
+<!-- SKILLS SECTION (No percentages, clean badges with unique icons) -->
 <section id="skills">
     <div class="section-header">
         <h2>Technical Skills</h2>
-        <p class="section-subtitle">Proficiency across programming languages and technologies</p>
+        <p class="section-subtitle">Core competencies across languages & frameworks</p>
     </div>
 
     <div class="skills-container">
         <div class="skill-category slide-in-left">
             <h3 class="category-title">Programming Languages</h3>
-            <div class="skill-item">
-                <div class="skill-name">
-                    <span>C++</span>
-                    <span>90%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 90%"></div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-name">
-                    <span>Java</span>
-                    <span>85%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-name">
-                    <span>JavaScript</span>
-                    <span>80%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 80%"></div>
-                </div>
+            <div class="skills-badge-grid">
+                <span class="skill-badge">
+                    <i class="fas fa-code"></i> C
+                </span>
+                <span class="skill-badge">
+                    <i class="fas fa-plus-circle"></i> C++
+                </span>
+                <span class="skill-badge">
+                    <i class="fab fa-java"></i> Java
+                </span>
+                <!-- Filler to maintain spacing -->
+                <span class="skill-badge skill-filler"></span>
+                <span class="skill-badge skill-filler"></span>
             </div>
         </div>
 
-        <div class="skill-category fade-in" style="animation-delay: 0.2s">
-            <h3 class="category-title">Web Development</h3>
-            <div class="skill-item">
-                <div class="skill-name">
-                    <span>React.js</span>
-                    <span>85%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-name">
-                    <span>HTML/CSS</span>
-                    <span>95%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 95%"></div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-name">
-                    <span>Node.js</span>
-                    <span>75%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 75%"></div>
-                </div>
+        <div class="skill-category fade-in">
+            <h3 class="category-title">Web & Frameworks</h3>
+            <div class="skills-badge-grid">
+                <span class="skill-badge">
+                    <i class="fab fa-react"></i> React.js
+                </span>
+                <span class="skill-badge">
+                    <i class="fab fa-html5"></i> HTML5
+                </span>
+                <span class="skill-badge">
+                    <i class="fab fa-css3-alt"></i> CSS3
+                </span>
+                <span class="skill-badge">
+                    <i class="fas fa-leaf"></i> MongoDB
+                </span>
+                <!-- Filler to maintain spacing -->
+                <span class="skill-badge skill-filler"></span>
             </div>
         </div>
 
         <div class="skill-category slide-in-right">
             <h3 class="category-title">Soft Skills</h3>
             <div class="soft-skills-grid">
-                <div class="soft-skill">Problem Solving</div>
-                <div class="soft-skill">Critical Thinking</div>
-                <div class="soft-skill">Team Leadership</div>
-                <div class="soft-skill">Quick Learner</div>
-                <div class="soft-skill">Effective Communication</div>
-                <div class="soft-skill">Time Management</div>
+                <div class="soft-skill">
+                    <i class="fas fa-puzzle-piece"></i> Problem Solving
+                </div>
+                <div class="soft-skill">
+                    <i class="fas fa-brain"></i> Critical Thinking
+                </div>
+                <div class="soft-skill">
+                    <i class="fas fa-users"></i> Team Leadership
+                </div>
+                <div class="soft-skill">
+                    <i class="fas fa-rocket"></i> Quick Learner
+                </div>
+                <div class="soft-skill">
+                    <i class="fas fa-clock"></i> Time Management
+                </div>
+                <div class="soft-skill">
+                    <i class="fas fa-handshake"></i> Adaptability
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    /* Skill badge styling with unique icons */
+    .skill-badge {
+        background: rgba(0, 229, 255, 0.12);
+        color: var(--accent);
+        padding: 10px 18px;
+        border-radius: 40px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+        transition: all 0.2s ease;
+        border: 1px solid rgba(0, 229, 255, 0.25);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .skill-badge i {
+        font-size: 1.15rem;
+        width: 20px;
+        text-align: center;
+    }
+
+    .skill-badge:hover {
+        background: var(--accent-soft);
+        transform: translateY(-2px);
+        border-color: var(--accent);
+        box-shadow: 0 4px 12px rgba(0, 229, 255, 0.2);
+    }
+
+    /* Invisible filler badges to maintain consistent spacing */
+    .skill-badge.skill-filler {
+        visibility: hidden;
+        pointer-events: none;
+        background: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        padding: 10px 18px;
+    }
+
+    .skill-badge.skill-filler:hover {
+        transform: none;
+        background: transparent;
+        border-color: transparent;
+    }
+
+    /* Skills badge grid */
+    .skills-badge-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 0.5rem;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    /* Make all skill-category cards equal height */
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 3rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        align-items: stretch;
+    }
+
+    .skill-category {
+        background: var(--bg-card);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .skills-badge-grid, .soft-skills-grid {
+        flex: 1;
+    }
+
+    /* Soft skills grid with icons */
+    .soft-skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .soft-skill {
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        text-align: center;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-weight: 500;
+    }
+
+    .soft-skill i {
+        font-size: 1.2rem;
+        color: var(--accent);
+    }
+
+    .soft-skill:hover {
+        background: var(--accent-soft);
+        transform: translateY(-3px);
+    }
+
+    /* Category title styling */
+    .category-title {
+        color: var(--accent);
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+</style>
 
 <!-- ABOUT SECTION -->
 <section id="about">
@@ -1285,19 +1420,17 @@
             <p>View my projects and contributions</p>
         </a>
 
-        <a href="https://www.linkedin.com/in/shivamrxl" target="_blank" class="contact-card fade-in" style="animation-delay: 0.2s">
+        <a href="https://www.linkedin.com/in/shivamrxl" target="_blank" class="contact-card fade-in">
             <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
             <h3>LinkedIn</h3>
             <p>Connect professionally</p>
         </a>
 
-        <a href="mailto:shivamkunwar14@gmail.com" class="contact-card fade-in" style="animation-delay: 0.1s">
+        <a href="mailto:shivamkunwar14@gmail.com" class="contact-card fade-in">
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <h3>Email</h3>
             <p>shivamkunwar14@gmail.com</p>
         </a>
-
-        
     </div>
 </section>
 
@@ -1323,7 +1456,6 @@
             : '<i class="fas fa-bars"></i>';
     });
 
-    // Close menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
@@ -1331,7 +1463,6 @@
         });
     });
 
-    // Navbar scroll effect
     window.addEventListener('scroll', () => {
         const navbar = document.getElementById('navbar');
         if (window.scrollY > 50) {
@@ -1340,14 +1471,10 @@
             navbar.classList.remove('scrolled');
         }
 
-        // Active link on scroll
         let current = '';
         const sections = document.querySelectorAll('section');
-        
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.clientHeight;
-            
             if (scrollY >= sectionTop) {
                 current = section.getAttribute('id');
             }
@@ -1361,40 +1488,20 @@
         });
     });
 
-    // Scroll animation
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                
-                // Animate skill bars
-                if (entry.target.querySelector('.skill-progress')) {
-                    const skillBars = entry.target.querySelectorAll('.skill-progress');
-                    skillBars.forEach(bar => {
-                        const width = bar.style.width;
-                        bar.style.width = '0';
-                        setTimeout(() => {
-                            bar.style.width = width;
-                        }, 300);
-                    });
-                }
             }
         });
     }, observerOptions);
 
-    // Observe all animated elements
     document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
         observer.observe(el);
     });
 
-    // Initialize animations on page load
     window.addEventListener('load', () => {
-        // Trigger initial animations
         setTimeout(() => {
             document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
                 if (el.getBoundingClientRect().top < window.innerHeight * 0.8) {
@@ -1407,5 +1514,3 @@
 
 </body>
 </html>
-
-
